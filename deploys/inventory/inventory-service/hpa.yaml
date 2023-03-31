@@ -4,7 +4,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: inventory-service
-  namespace: reverse-proxy
+  namespace: inventory
   labels:
     app: inventory-service
 spec:
