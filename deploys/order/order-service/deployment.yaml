@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: "cuongdangdevsecops/order-service:3.0.0"
+          image: "cuongdangdevsecops/order-service:4.0.0"
           resources:
             limits:
               cpu: 600M
@@ -33,6 +33,15 @@ spec:
               memory: 512Mi
           ports:
               - containerPort: 8080
+          env:
+            - name: INVENTORY_SERVICE_BASE_URL
+              value: http://inventory-service.inventory
+            - name: PAYMENT_SERVICE_BASE_URL
+              value: http://payment-service.payment
+            - name: SHIPMENT_SERVICE_BASE_URL
+              value: http://shipment-service.shipment
+            - name: NOTIFICATION_SERVICE_BASE_URL
+              value: http://notification-service.notification
           livenessProbe:
             httpGet:
               path: /actuator/health/readiness
