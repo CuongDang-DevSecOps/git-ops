@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: shipment-service
-          image: "cuongdangdevsecops/shipment-service:2.0.0"
+          image: "cuongdangdevsecops/shipment-service:3.0.0"
           resources:
             limits:
               cpu: 600M
