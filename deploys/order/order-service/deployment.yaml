@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: "cuongdangdevsecops/order-service:2.0.0"
+          image: "cuongdangdevsecops/order-service:3.0.0"
           resources:
             limits:
               cpu: 600M
