@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: payment-service
-          image: "cuongdangdevsecops/payment-service:5.0.0"
+          image: "cuongdangdevsecops/payment-service:6.0.0"
           resources:
             limits:
               cpu: 600M
