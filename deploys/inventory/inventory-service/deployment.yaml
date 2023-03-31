@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: inventory-service
-          image: "cuongdangdevsecops/inventory-service:2.0.0"
+          image: "cuongdangdevsecops/inventory-service:3.0.0"
           resources:
             limits:
               cpu: 600M
