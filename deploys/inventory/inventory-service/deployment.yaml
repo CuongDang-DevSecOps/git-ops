@@ -8,11 +8,7 @@ metadata:
     app: inventory-service
   namespace: inventory
 spec:
-  replicas: 2
-  strategy:
-    rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
+  replicas: 1
   selector:
     matchLabels:
       app: inventory-service
@@ -23,31 +19,13 @@ spec:
     spec:
       containers:
         - name: inventory-service
-          image: "cuongdangdevsecops/inventory-service:3.0.0"
+          image: "cuongdangdevsecops/inventory-service:5.0.0"
           resources:
             limits:
-              cpu: 600M
-              memory: 1Gi
+              cpu: 100m
+              memory: 128Mi
             requests:
-              cpu: 500m
-              memory: 512Mi
+              cpu: 100m
+              memory: 128Mi
           ports:
-              - containerPort: 8080
-          livenessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-            initialDelaySeconds: 120
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-            initialDelaySeconds: 120
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1
+            - containerPort: 8080
