@@ -8,11 +8,7 @@ metadata:
     app: order-service
   namespace: order
 spec:
-  replicas: 2
-  strategy:
-    rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
+  replicas: 1
   selector:
     matchLabels:
       app: order-service
@@ -23,16 +19,16 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: "cuongdangdevsecops/order-service:4.0.0"
+          image: "cuongdangdevsecops/order-service:5.0.0"
           resources:
             limits:
-              cpu: 600M
-              memory: 1Gi
+              cpu: 100m
+              memory: 128Mi
             requests:
-              cpu: 500m
-              memory: 512Mi
+              cpu: 100m
+              memory: 128Mi
           ports:
-              - containerPort: 8080
+            - containerPort: 8080
           env:
             - name: INVENTORY_SERVICE_BASE_URL
               value: http://inventory-service.inventory
@@ -42,21 +38,3 @@ spec:
               value: http://shipment-service.shipment
             - name: NOTIFICATION_SERVICE_BASE_URL
               value: http://notification-service.notification
-          livenessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-            initialDelaySeconds: 120
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1
-          readinessProbe:
-            httpGet:
-              path: /actuator/health/readiness
-              port: 8080
-            initialDelaySeconds: 120
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1
