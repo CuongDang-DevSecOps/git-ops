@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: payment-service
-          image: "cuongdangdevsecops/payment-service:6.0.2"
+          image: "cuongdangdevsecops/payment-service:7.0.0"
           resources:
             limits:
               cpu: 100m
@@ -28,4 +28,4 @@ spec:
               cpu: 100m
               memory: 128Mi
           ports:
-              - containerPort: 8080
+            - containerPort: 8080
