@@ -8,11 +8,7 @@ metadata:
     app: payment-service
   namespace: payment
 spec:
-  replicas: 2
-  strategy:
-    rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
+  replicas: 1
   selector:
     matchLabels:
       app: payment-service
@@ -26,10 +22,10 @@ spec:
           image: "cuongdangdevsecops/payment-service:6.0.2"
           resources:
             limits:
-              cpu: 600M
-              memory: 1Gi
+              cpu: 100m
+              memory: 128Mi
             requests:
-              cpu: 500m
-              memory: 512Mi
+              cpu: 100m
+              memory: 128Mi
           ports:
               - containerPort: 8080
